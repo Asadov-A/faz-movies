@@ -1,0 +1,180 @@
+.movie-page {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  width: 90%;
+  max-width: 1400px;
+  margin: 50px auto;
+  padding: 40px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 50px rgba(255, 60, 60, 0.5);
+  color: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.movie-left {
+  flex: 1 1 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.movie-left img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(255, 60, 60, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.movie-left img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 60px rgba(255, 60, 60, 0.9);
+}
+
+.movie-top {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #ccc;
+  text-align: center;
+}
+
+.imdb-link {
+  margin-top: 15px;
+  color: #ffcc00;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.imdb-link:hover {
+  color: #ff3c3c;
+  text-shadow: 0 0 15px rgba(255, 60, 60, 1);
+}
+
+.movie-right {
+  flex: 2 1 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.movie-right h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  text-align: center;
+  text-shadow: 0 0 15px rgba(255, 60, 60, 1);
+}
+
+.movie-right h2 {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin-bottom: 30px;
+  background: rgba(50, 30, 30, 0.7);
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.movie-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 1rem;
+}
+
+.movie-bottom p {
+  background: #2b1a10;
+  padding: 12px 18px;
+  border-radius: 12px;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+}
+
+.movie-extra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.movie-extra p {
+  background: #2b1a10;
+  padding: 10px 15px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.movie-extra a {
+  color: #ffcc00;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.movie-extra a:hover {
+  color: #ff3c3c;
+  text-shadow: 0 0 10px rgba(255, 60, 60, 0.8);
+}
+
+.movie-page,
+.movie-left img,
+.movie-right h1,
+.movie-right h2,
+.movie-bottom p,
+.movie-extra p,
+.imdb-link {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards;
+}
+
+.movie-left img {
+  animation-delay: 0.2s;
+}
+.movie-right h1 {
+  animation-delay: 0.4s;
+}
+.movie-right h2 {
+  animation-delay: 0.6s;
+}
+.movie-bottom p {
+  animation-delay: 0.8s;
+}
+.movie-extra p {
+  animation-delay: 0.9s;
+}
+.imdb-link {
+  animation-delay: 1s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.loading {
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.exit-btn {
+  background-color: transparent;
+  border: none;
+  font-size: 40px;
+}
+
+.loading {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
