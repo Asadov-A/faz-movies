@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { FaChevronCircleLeft } from "react-icons/fa";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 import { Toaster } from "react-hot-toast";
 import { toast } from "react-hot-toast";
 
 function Login() {
+  const [showPass, setShowPass] = useState(false);
+
   const [mode, setMode] = useState("login");
   const [formData, setFormData] = useState({
     userName: "",
@@ -22,22 +26,22 @@ function Login() {
   async function handleSubmit(e) {
     e.preventDefault();
 
-  if (mode === "signup") {
-  localStorage.setItem("fazUser", JSON.stringify(formData));
+    if (mode === "signup") {
+      localStorage.setItem("fazUser", JSON.stringify(formData));
 
-  await fetch("https://69198b479ccba073ee933bd9.mockapi.io/users", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(formData),
-  });
+      await fetch("https://69198b479ccba073ee933bd9.mockapi.io/users", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-  toast.success(
-    `You have successfully created a ${formData.userName} account!`,
-    { duration: 1500 }
-  );
+      toast.success(
+        `You have successfully created a ${formData.userName} account!`,
+        { duration: 1500 }
+      );
 
-  setMode("login");
-} else {
+      setMode("login");
+    } else {
       const res = await fetch(
         "https://69198b479ccba073ee933bd9.mockapi.io/users"
       );
@@ -123,15 +127,22 @@ function Login() {
             />
           </div>
 
-          <div className="input-block">
+          <div className="input-block password-block">
             <label>Password</label>
-            <input
-              type="password"
-              name="userPasw"
-              placeholder="Enter password"
-              required
-              onChange={handleChange}
-            />
+
+            <div className="password-wrapper">
+              <input
+                type={showPass ? "text" : "password"}
+                name="userPasw"
+                placeholder="Enter password"
+                required
+                onChange={handleChange}
+              />
+
+              <span className="eye-icon" onClick={() => setShowPass(!showPass)}>
+                {showPass ? <FaEyeSlash /> : <FaEye />}
+              </span>
+            </div>
           </div>
 
           <button className="login-btn" type="submit">
